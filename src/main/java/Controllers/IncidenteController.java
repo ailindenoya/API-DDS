@@ -11,6 +11,7 @@ public class IncidenteController {
   String username ="root";
   String password ="DDS_GRUPO_7_2023!";
 
+
   private List<ValoresConsultaIncidentes> valores;
 
   private List<ValoresConsultaIncidentes> obtenerIncidentesDe(String idEntidad){
