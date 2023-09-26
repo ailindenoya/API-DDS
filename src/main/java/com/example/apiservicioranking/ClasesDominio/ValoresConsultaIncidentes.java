@@ -1,22 +1,17 @@
-package ClasesDominio;
+package com.example.apiservicioranking.ClasesDominio;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class ValoresConsultaIncidentes {
-  String nombreEntidad;
   EstadoIncidente estadoIncidente;
   LocalDate fechaApertura;
   LocalDate fechaCierre;
 
-  public ValoresConsultaIncidentes(String nombreEntidad, EstadoIncidente estadoIncidente, LocalDate fechaApertura, LocalDate fechaCierre) {
-    this.nombreEntidad = nombreEntidad;
+  public ValoresConsultaIncidentes( EstadoIncidente estadoIncidente, LocalDate fechaApertura, LocalDate fechaCierre) {
     this.estadoIncidente = estadoIncidente;
     this.fechaApertura = fechaApertura;
     this.fechaCierre = fechaCierre;
-  }
-
-  public String getNombreEntidad() {
-    return nombreEntidad;
   }
 
   public EstadoIncidente getEstadoIncidente() {
@@ -31,10 +26,6 @@ public class ValoresConsultaIncidentes {
     return fechaCierre;
   }
 
-  public void setNombreEntidad(String nombreEntidad) {
-    this.nombreEntidad = nombreEntidad;
-  }
-
   public void setEstadoIncidente(EstadoIncidente estadoIncidente) {
     this.estadoIncidente = estadoIncidente;
   }
@@ -45,5 +36,9 @@ public class ValoresConsultaIncidentes {
 
   public void setFechaCierre(LocalDate fechaCierre) {
     this.fechaCierre = fechaCierre;
+  }
+
+  public Long getTiempoResolucion(){
+    return ChronoUnit.DAYS.between(fechaApertura,fechaCierre);
   }
 }

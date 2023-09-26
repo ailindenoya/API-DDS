@@ -1,4 +1,4 @@
-package ClasesDominio;
+package com.example.apiservicioranking.ClasesDominio;
 
 public class ValorEntidadReporte {
   private String nombre;
