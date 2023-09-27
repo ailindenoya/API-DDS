@@ -21,17 +21,20 @@ public class RankingService {
     List<ValorEntidadReporte> resultados = new ArrayList<>();
 
     EntidadController entidadController = new EntidadController();
-    IncidenteController incidenteController = new IncidenteController();
+
     //Obtener todas las entidades
     List<ValoresConsultaEntidades> entidades = entidadController.obtenerEntidades();
     //Por cada entidad recuperar sus incidentes y hacer calculo
     if(entidades != null) {
       for (ValoresConsultaEntidades entidad : entidades) {
+        IncidenteController incidenteController = new IncidenteController();
         List<ValoresConsultaIncidentes> incidentes = incidenteController.obtenerIncidentesDe(String.valueOf(entidad.getId()));
         List<ValoresConsultaIncidentes> incidentesAbiertos = incidentes.stream().filter(i -> i.getEstadoIncidente() == EstadoIncidente.ABIERTO).toList();
         List<ValoresConsultaIncidentes> incidentesCerrados = incidentes.stream().filter(i -> i.getEstadoIncidente() == EstadoIncidente.CERRADO).toList();
         int cantidadNoResueltos = incidentesAbiertos.size();
         long tiempoResolucion = incidentesCerrados.stream().mapToLong(ValoresConsultaIncidentes::getTiempoResolucion).sum();
+
+
         double valorImpacto = tiempoResolucion + (cantidadNoResueltos * coeficienteCNF);
 
         ValorEntidadReporte valorResultado = new ValorEntidadReporte(entidad.getNombre(), valorImpacto);
@@ -39,7 +42,8 @@ public class RankingService {
       }
     }
     String nombreRanking = "Ranking - "+ LocalDate.now();
-    MisDatos data = new MisDatos(nombreRanking,resultados);
+    List<ValorEntidadReporte> resultadosOrdenados = ordenarLista(resultados);
+    MisDatos data = new MisDatos(nombreRanking,resultadosOrdenados);
     return ResponseEntity.ok(data);
   }
 
