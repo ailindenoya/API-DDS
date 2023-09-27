@@ -3,6 +3,7 @@ package com.example.apiservicioranking.Controllers;
 import com.example.apiservicioranking.ClasesDominio.ValoresConsultaEntidades;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EntidadController {
@@ -11,7 +12,7 @@ public class EntidadController {
     String password ="DDS_GRUPO_7_2023!";
 
 
-    private List<ValoresConsultaEntidades> valores;
+    private List<ValoresConsultaEntidades> valores = new ArrayList<>();
 
     public List<ValoresConsultaEntidades> obtenerEntidades(){
         try {

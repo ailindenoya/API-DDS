@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -45,6 +47,11 @@ public class RankingService {
     List<ValorEntidadReporte> resultadosOrdenados = ordenarLista(resultados);
     MisDatos data = new MisDatos(nombreRanking,resultadosOrdenados);
     return ResponseEntity.ok(data);
+  }
+
+  private List<ValorEntidadReporte> ordenarLista(List<ValorEntidadReporte> valores){
+    Collections.sort(valores);
+    return valores;
   }
 
 
