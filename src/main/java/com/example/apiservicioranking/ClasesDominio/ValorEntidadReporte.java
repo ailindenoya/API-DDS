@@ -1,25 +1,25 @@
 package com.example.apiservicioranking.ClasesDominio;
 
 public class ValorEntidadReporte implements Comparable<ValorEntidadReporte> {
-  private String nombre;
+  private int id;
   private double valor;
 
 
-  public ValorEntidadReporte(String nombre, double valor) {
-    this.nombre = nombre;
+  public ValorEntidadReporte(int id, double valor) {
+    this.id = id;
     this.valor = valor;
   }
 
-  public String getNombre() {
-    return nombre;
+  public int getId() {
+    return id;
   }
 
   public double getValor() {
     return valor;
   }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
+  public void setId(int id) {
+    this.id= id;
   }
 
   public void setValor(double valor) {

@@ -39,7 +39,7 @@ public class RankingService {
 
         double valorImpacto = tiempoResolucion + (cantidadNoResueltos * coeficienteCNF);
 
-        ValorEntidadReporte valorResultado = new ValorEntidadReporte(entidad.getNombre(), valorImpacto);
+        ValorEntidadReporte valorResultado = new ValorEntidadReporte(entidad.getId(), valorImpacto);
         resultados.add(valorResultado);
       }
     }

@@ -20,12 +20,11 @@ public class EntidadController {
 
             Statement statement = conexion.createStatement();
 
-            ResultSet resultSet = statement.executeQuery("select id, NombreEntidad from entidad");
+            ResultSet resultSet = statement.executeQuery("select id from entidad");
 
             while(resultSet.next()){
                 Integer id = resultSet.getInt("id");
-                String nombre = resultSet.getString("NombreEntidad");
-                this.valores.add(new ValoresConsultaEntidades(nombre,id));
+                this.valores.add(new ValoresConsultaEntidades(id));
             }
 
             conexion.close();

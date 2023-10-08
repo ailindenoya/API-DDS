@@ -4,12 +4,12 @@ import java.util.List;
 
 public class Entidad {
 
-  String nombre;
+  int id;
   List<Servicio> servicios;
 
 
-  public Entidad(String nombre, List<Servicio> servicios) {
-    this.nombre = nombre;
+  public Entidad(int id, List<Servicio> servicios) {
+    this.id = id;
     this.servicios = servicios;
   }
 
